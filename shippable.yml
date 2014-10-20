@@ -1,6 +1,6 @@
 language: ruby
 
-build_image: shippableimages/ubuntu1204_ruby:0.0.1
+build_image: shippableimages/ubuntu1204_ruby
 
 rvm:
   - 2.1.1
@@ -11,11 +11,11 @@ env:
 before_install:
  - source ~/.rvm/scripts/rvm
  - rvm install $SHIPPABLE_RUBY --verify-downloads 1
- - source ~/.bashrc && ~/.rvm/scripts/rvm && rvm use $SHIPPABLE_RUBY
+ - rvm use $SHIPPABLE_RUBY
+ - ruby -v
  
 install:
  - bundle install --gemfile="Gemfile"
- - ruby -v
 
 script:
  - bundle exec rake
